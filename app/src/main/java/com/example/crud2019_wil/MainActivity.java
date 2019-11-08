@@ -333,8 +333,11 @@ public class MainActivity extends AppCompatActivity{
         }else if(id == R.id.action_salir){
             DialogConfirmacion();
             return true;
-        }
 
+    }else if(id == R.id.action_acercade){
+        DialogConfirmacion2();
+        return true;
+    }
         return super.onOptionsItemSelected(item);
     }
 
@@ -369,6 +372,29 @@ public class MainActivity extends AppCompatActivity{
         dialogo.show();
     }
 
+    private void DialogConfirmacion2(){
+        //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        String mensaje2 = "Creado por Wilffredo Montes";
+        dialogo = new AlertDialog.Builder(MainActivity.this);
+        dialogo.setIcon(R.drawable.ic_search);
+        dialogo.setTitle("Acerca de");
+        dialogo.setMessage(mensaje2);
+        dialogo.setCancelable(false);
+        dialogo.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo, int id) {
+                /*Intent intent = new Intent(DashboardLuces.this, luces_control_sms.class);
+                startActivity(intent);*/
+                MainActivity.this.finishAffinity();
+                //MainActivity.this.finish();
+            }
+        });
+        dialogo.setNegativeButton("Volver", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo, int id) {
+                Toast.makeText(getApplicationContext(), "github.com/wilfredo119", Toast.LENGTH_LONG).show();
+            }
+        });
+        dialogo.show();
+    }
 
     //Creación de HILOS
     void Hilo(){
